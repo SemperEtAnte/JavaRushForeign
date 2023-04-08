@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group 'ru.semperante'
+version '1.0'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+java.sourceCompatibility = JavaVersion.VERSION_19
+java.targetCompatibility = JavaVersion.VERSION_19
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'ru.semperante.javarushforeign.JavaRushForeignMain'
+    }
+}
+dependencies {
+
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += "--enable-preview"
+}
+
+tasks.withType(JavaExec).configureEach {
+    jvmArgs += '--enable-preview'
+}
